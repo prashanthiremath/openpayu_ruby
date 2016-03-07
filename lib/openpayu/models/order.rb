@@ -6,21 +6,23 @@ module OpenPayU
     class Order < Model
       STATUSES = %w(NEW PENDING CANCELLED REJECTED
                     COMPLETED WAITING_FOR_CONFIRMATION)
-      attr_accessor :customer_ip, :ext_order_id, :merchant_pos_id, :description,
-        :currency_code, :total_amount, :validity_time, :notify_url, :order_url,
-          :complete_url, :req_id, :ref_req_id, :properties
-      validates :customer_ip, :ext_order_id, :merchant_pos_id, :description,
-        :currency_code, :total_amount, presence: true
+      # attr_accessor :customer_ip, :ext_order_id, :merchant_pos_id, :description,
+      #   :currency_code, :total_amount, :validity_time, :notify_url, :order_url,
+      #     :continue_url, :req_id, :ref_req_id, :properties
+      attr_accessor :key, :txnid, :firstname, :description, :amount, :surl, :furl, :hash, 
+                   :email, :phone, :productinfo, :lastname, :salt
+      validates :key, :txnid, :firstname, :amount, :salt,
+        :furl, :surl, presence: true
       has_one_object :buyer # not required
       has_one_object :fee # not required
       has_many_objects :products, :product # not required
       has_many_objects :shipping_methods, :shipping_method # not required
 
       def after_initialize
-        @req_id       ||= "{#{SecureRandom.uuid}}"
-        @notify_url   ||= OpenPayU::Configuration.notify_url
-        @order_url    ||= OpenPayU::Configuration.order_url
-        @complete_url ||= OpenPayU::Configuration.complete_url
+       # @req_id       ||= "{#{SecureRandom.uuid}}"
+       # @notify_url   ||= OpenPayU::Configuration.notify_url
+       # @order_url    ||= OpenPayU::Configuration.order_url
+       # @continue_url ||= OpenPayU::Configuration.continue_url
       end
     end
   end
