@@ -28,7 +28,6 @@ Gem::Specification.new do |spec|
   else
     spec.add_development_dependency "activemodel"
     spec.add_development_dependency "activesupport"
-    spec.add_runtime_dependency "activemodel"
     spec.add_runtime_dependency "activesupport"
   end
   spec.add_development_dependency "vcr"
