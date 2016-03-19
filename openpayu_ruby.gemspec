@@ -24,7 +24,6 @@ Gem::Specification.new do |spec|
   if RUBY_VERSION < "1.9.3"
     spec.add_development_dependency "activemodel", '~> 3.2'
     spec.add_development_dependency "activesupport", '~> 3.2'
-    spec.add_runtime_dependency "activemodel", '~> 3.2'
     spec.add_runtime_dependency "activesupport", '~> 3.2'
   else
     spec.add_development_dependency "activemodel"
